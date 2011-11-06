@@ -2,6 +2,7 @@ require "enju_search_log/engine"
 
 module EnjuSearchLog
   def save_search_history(query, offset = 0, total = 0, user = nil)
+    return unless user.try(:save_search_history)
     if configatron.write_search_log_to_file
       write_search_log(query, total, user)
     else
