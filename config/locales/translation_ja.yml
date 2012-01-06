@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    models:
+      search_history: 検索履歴
+
+    attributes:
+      user:
+        save_search_history: 検索履歴を保存する
+      search_history:
+        operation: 操作
+        version: バージョン
+        query: クエリ
+        start_record: スタート記録
+        maximum_records: 最大レコード数
+        record_packing: レコードの梱包
+        record_schema: レコードスキーマ
+        result_set_ttl: 結果のTTL設定
+        stylesheet: スタイルシート
+        extra_request_data: 余分なリクエストデータ
+        number_of_records: レコードの数
+        result_set_idle_time: 結果のアイドル時間を設定
+        records: レコード
+        next_record_position: 次のレコードの位置
+        diagnostics: 診断
+        extra_response_data: 余分な応答データ
+        echoed_search_retrieve_request: エコーの検索リクエストを取得
+
+  search_history:
+    all_history: "全ての検索履歴"
+    failed_search: "失敗した検索"
+    searched_at: "検索時刻"

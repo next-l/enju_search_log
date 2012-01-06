@@ -1,0 +1,31 @@
+en:
+  activerecord:
+    models:
+      search_history: Search history
+
+    attributes:
+      user:
+        save_search_history: Save search history
+      search_history:
+        operation: Operation
+        version: Version
+        query: Query
+        start_record: Start record
+        maximum_records: Maximum records
+        record_packing: Record packing
+        record_schema: Record schema
+        result_set_ttl: Result set ttl
+        stylesheet: Stylesheet
+        extra_request_data: Extra request data
+        number_of_records: Number of records
+        result_set_idle_time: Result set idle time
+        records: Records
+        next_record_position: Next record position
+        diagnostics: Diagnostics
+        extra_response_data: Extra response data
+        echoed_search_retrieve_request: Echoed search retrieve request
+
+  search_history:
+    all_history: "All search history"
+    failed_search: "Failed searches"
+    searched_at: "Searched at"
