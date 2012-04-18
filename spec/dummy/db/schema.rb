@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201163718) do
+ActiveRecord::Schema.define(:version => 20120418121539) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20111201163718) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "save_search_history"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
