@@ -20,7 +20,7 @@ class SearchHistoriesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.rhtml
+      format.html # index.html.erb
       format.json { render :json => @search_histories.to_json }
     end
   end
@@ -29,7 +29,7 @@ class SearchHistoriesController < ApplicationController
   # GET /search_histories/1.json
   def show
     respond_to do |format|
-      format.html # show.rhtml
+      format.html # show.html.erb
       format.json { render :json => @search_history.to_json }
     end
   end
