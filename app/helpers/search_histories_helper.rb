@@ -18,15 +18,14 @@ module SearchHistoriesHelper
     end
     divisor = ((max - min).div(classes.size)) + 1
 
-    html =    %(<div class="hTagcloud">\n)
-    html <<   %(  <ul class="popularity">\n)
-    query_and_numbers.each do |query|
-      html << %(  <li>)
-      html << link_to(h(query[0]), manifestations_url(:query => query[0]), :class => classes[(query[1] - min).div(divisor)])
-      html << %(  </li>\n) # FIXME: IEのために文末の空白を入れている
+    content_tag :div, :class => "hTagcloud" do
+      content_tag :ul, :class => "popularity" do
+        query_and_numbers.each do |query|
+          content_tag :li do
+            link_to(h(query[0]), manifestations_url(:query => query[0]), :class => classes[(query[1] - min).div(divisor)])
+          end
+        end
+      end
     end
-    html <<   %(  </ul>\n)
-    html <<   %(</div>\n)
-    html.html_safe
   end
 end

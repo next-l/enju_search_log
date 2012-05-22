@@ -40,9 +40,8 @@ class SearchHistoriesController < ApplicationController
     @search_history.destroy
 
     respond_to do |format|
-      #format.html { redirect_to user_search_histories_url(@user) }
       format.html { redirect_to search_histories_url }
-      format.json { head :ok }
+      format.json { head :no_content }
     end
   end
 end
