@@ -54,6 +54,6 @@
 
 <div id="submenu" class="ui-corner-all">
   <ul>
-    <li><%= link_to t('search_history.remove_all_history'), remove_all_search_histories_path, :method => :put %></li>
+    <li><%= link_to t('search_history.remove_all_history'), remove_all_search_histories_path, :method => :put, :data => {:confirm => t('page.are_you_sure')} %></li>
   </ul>
 </div>
