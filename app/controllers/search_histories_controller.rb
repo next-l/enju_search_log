@@ -44,4 +44,13 @@ class SearchHistoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def remove_all
+    SearchHistory.remove_all_history(current_user)
+
+    respond_to do |format|
+      format.html { redirect_to search_histories_url, :notice => t('controller.successfully_deleted', :model => t('activerecord.models.search_history')) }
+      format.json { head :no_content }
+    end
+  end
 end

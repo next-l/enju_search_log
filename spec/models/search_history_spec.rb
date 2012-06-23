@@ -2,8 +2,16 @@
 require 'spec_helper'
 
 describe SearchHistory do
-  #pending "add some examples to (or delete) #{__FILE__}"
+  fixtures :all
 
+  it "should destroy all history" do
+    user = users(:admin)
+    old_count = SearchHistory.count
+    old_user_count = user.search_histories.count
+    SearchHistory.remove_all_history(user)
+    user.search_histories.count.should eq 0
+    SearchHistory.count.should eq old_count
+  end
 end
 
 # == Schema Information

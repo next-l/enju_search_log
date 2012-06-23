@@ -16,6 +16,10 @@ class SearchHistory < ActiveRecord::Base
   def self.not_found_query(number, duration = 1.year.ago)
     self.not_found.where('created_at > ?', duration).all.collect(&:query).inject(Hash.new(0)){|r,e|r[e]+=1;r}.to_a.collect{|q| q if q[1] >= number.to_i}.compact
   end
+
+  def self.remove_all_history(user)
+    user.search_histories.update_all(:user_id => nil)
+  end
 end
 
 # == Schema Information
