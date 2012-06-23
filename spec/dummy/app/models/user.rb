@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   has_one :user_has_role
   has_one :role, :through => :user_has_role
   belongs_to :required_role, :class_name => 'Role', :foreign_key => 'required_role_id'
-  has_many :search_histories, :dependent => :destroy
+
+  enju_search_log_user
 
   def has_role?(role_in_question)
     return false unless role

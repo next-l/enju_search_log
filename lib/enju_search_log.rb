@@ -1,4 +1,5 @@
 require "enju_search_log/engine"
+require "enju_search_log/user"
 
 module EnjuSearchLog
   def save_search_history(query, offset = 0, total = 0, user = nil)
@@ -14,3 +15,5 @@ module EnjuSearchLog
     SEARCH_LOGGER.info "#{Time.zone.now}\t#{query}\t#{total}\t#{user.try(:username)}\t#{params[:format]}"
   end
 end
+
+ActiveRecord::Base.send :include, EnjuSearchLog::SearchLogUser
