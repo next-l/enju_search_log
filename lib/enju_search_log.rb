@@ -12,7 +12,10 @@ module EnjuSearchLog
   end
 
   def write_search_log(query, total, user)
-    SEARCH_LOGGER.info "#{Time.zone.now}\t#{query}\t#{total}\t#{user.try(:username)}\t#{params[:format]}"
+    if user
+      username = user.username if user.save_search_history
+    end
+    SEARCH_LOGGER.info "#{Time.zone.now}\t#{query}\t#{total}\t#{username}\t#{params[:format]}"
   end
 end
 
