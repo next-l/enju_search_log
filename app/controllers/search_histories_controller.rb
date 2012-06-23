@@ -6,17 +6,17 @@ class SearchHistoriesController < ApplicationController
   # GET /search_histories.json
   def index
     if params[:mode] == 'not_found'
-      if current_user.has_role?('Administrator')
-        @search_histories = SearchHistory.not_found.order('created_at DESC').page(params[:page])
-      else
+      #if current_user.has_role?('Administrator')
+      #  @search_histories = SearchHistory.not_found.order('created_at DESC').page(params[:page])
+      #else
         @search_histories = current_user.search_histories.not_found.order('created_at DESC').page(params[:page])
-      end
+      #end
     else
-      if current_user.has_role?('Administrator')
-        @search_histories = SearchHistory.order('created_at DESC').page(params[:page])
-      else
+      #if current_user.has_role?('Administrator')
+      #  @search_histories = SearchHistory.order('created_at DESC').page(params[:page])
+      #else
         @search_histories = current_user.search_histories.order('created_at DESC').page(params[:page])
-      end
+      #end
     end
 
     respond_to do |format|
