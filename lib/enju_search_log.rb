@@ -7,7 +7,9 @@ module EnjuSearchLog
     if configatron.write_search_log_to_file
       write_search_log(query, total, user)
     else
-      history = SearchHistory.create(:query => query, :user => user, :start_record => offset + 1, :maximum_records => nil, :number_of_records => total)
+      history = SearchHistory.new(:query => query, :start_record => offset + 1, :maximum_records => nil, :number_of_records => total)
+      history.user = user
+      history.save
     end
   end
 
