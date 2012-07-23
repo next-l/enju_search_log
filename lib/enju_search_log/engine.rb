@@ -1,6 +1,4 @@
-require 'devise'
-require 'cancan'
-require 'will_paginate'
+require 'enju_core'
 
 module EnjuSearchLog
   class Engine < ::Rails::Engine
