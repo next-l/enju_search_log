@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = EnjuSearchLog::VERSION
   s.authors     = ["Kosuke Tanabe"]
   s.email       = ["tanabe@mwr.mediacom.keio.ac.jp"]
-  s.homepage    = "https://github.com/nabeta/enju_search_log"
+  s.homepage    = "https://github.com/next-l/enju_search_log"
   s.summary     = "enju_search_log plugin"
   s.description = "Search log management for Next-L Enju"
 
