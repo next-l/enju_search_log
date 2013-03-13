@@ -35,12 +35,12 @@
     <%- end -%>
     <td><%= l(search_history.created_at) -%></td>
     <td>
-      <%- if can? :destroy, search_history -%>
+      <%- if can? :delete, search_history -%>
         <%= link_to t('page.show'), search_history -%>
       <% end %>
     </td>
     <td>
-      <%- if can? :destroy, search_history -%>
+      <%- if can? :delete, search_history -%>
         <%= link_to t('page.destroy'), search_history, :data => {:confirm => t('page.are_you_sure')}, :method => :delete -%>
       <%- end -%>
     </td>
