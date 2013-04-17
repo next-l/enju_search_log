@@ -4,6 +4,17 @@ require 'spec_helper'
 describe SearchHistory do
   fixtures :all
 
+  it "should create search history" do
+    user = users(:admin)
+    user.save_search_history = true
+    user.save_history('test', 1, 10).should be_true
+  end
+
+  it "should not create search history if the user disabled logging" do
+    user = users(:admin)
+    user.save_history('test', 1, 10).should be_nil
+  end
+
   it "should destroy all history" do
     user = users(:admin)
     old_count = SearchHistory.count

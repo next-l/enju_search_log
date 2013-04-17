@@ -14,19 +14,20 @@ module EnjuSearchLog
     end
 
     module InstanceMethods
-      def save_search_history(query, offset = 0, total = 0)
-        return unless user.try(:save_search_history)
+      def save_history(query, offset = 0, total = 0, format = nil)
+        return nil unless self.save_search_history
         if Setting.write_search_log_to_file
-          write_search_log(query, total, username)
+          write_search_log(query, total, username, format)
         else
           history = SearchHistory.new(:query => query, :start_record => offset + 1, :maximum_records => nil, :number_of_records => total)
           history.user = self
-          history.save
+          history.save(:validate => false)
         end
       end
 
-      def write_search_log(query, total, username)
-        SEARCH_LOGGER.info "#{Time.zone.now}\t#{query}\t#{total}\t#{username}\t#{params[:format]}"
+      def write_search_log(query, total, username, format)
+        logger = ActiveSupport::BufferedLogger.new(File.join(Rails.root, 'log', 'search.log'))
+        logger.info "#{Time.zone.now}\t#{query}\t#{total}\t#{username}\t#{format}"
       end
     end
   end
