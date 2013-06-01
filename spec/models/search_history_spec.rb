@@ -29,10 +29,10 @@ end
 #
 # Table name: search_histories
 #
-#  id                             :integer         not null, primary key
+#  id                             :integer          not null, primary key
 #  user_id                        :integer
-#  operation                      :string(255)     default("searchRetrieve")
-#  sru_version                    :float           default(1.2)
+#  operation                      :string(255)      default("searchRetrieve")
+#  sru_version                    :float            default(1.2)
 #  query                          :string(255)
 #  start_record                   :integer
 #  maximum_records                :integer
@@ -41,7 +41,7 @@ end
 #  result_set_ttl                 :integer
 #  stylesheet                     :string(255)
 #  extra_request_data             :string(255)
-#  number_of_records              :integer         default(0)
+#  number_of_records              :integer          default(0)
 #  result_set_id                  :string(255)
 #  result_set_idle_time           :integer
 #  records                        :text
@@ -49,7 +49,7 @@ end
 #  diagnostics                    :text
 #  extra_response_data            :text
 #  echoed_search_retrieve_request :text
-#  created_at                     :datetime
-#  updated_at                     :datetime
+#  created_at                     :datetime         not null
+#  updated_at                     :datetime         not null
 #
 

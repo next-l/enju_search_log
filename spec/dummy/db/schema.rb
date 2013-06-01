@@ -13,6 +13,24 @@
 
 ActiveRecord::Schema.define(:version => 20120418121539) do
 
+  create_table "library_groups", :force => true do |t|
+    t.string   "name",                                                 :null => false
+    t.text     "display_name"
+    t.string   "short_name",                                           :null => false
+    t.string   "email"
+    t.text     "my_networks"
+    t.text     "login_banner"
+    t.text     "note"
+    t.integer  "country_id"
+    t.integer  "position"
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.text     "admin_networks"
+    t.string   "url",            :default => "http://localhost:3000/"
+  end
+
+  add_index "library_groups", ["short_name"], :name => "index_library_groups_on_short_name"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.text     "display_name"

@@ -95,8 +95,10 @@ describe SearchHistoriesController do
       end
 
       it "should not show missing search_history" do
-        get :show, :id => 100
-        response.should be_missing
+        lambda{
+          get :show, :id => 100
+        }.should raise_error(ActiveRecord::RecordNotFound)
+        #response.should be_missing
       end
     end
 
@@ -208,8 +210,10 @@ describe SearchHistoriesController do
       end
 
       it "should not destroy missing search_history" do
-        delete :destroy, :id => 100
-        response.should be_missing
+        lambda{
+          delete :destroy, :id => 100
+        }.should raise_error(ActiveRecord::RecordNotFound)
+        #response.should be_missing
       end
     end
 
