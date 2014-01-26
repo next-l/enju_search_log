@@ -1,4 +1,4 @@
-require 'enju_core'
+require 'enju_seed'
 
 module EnjuSearchLog
   class Engine < ::Rails::Engine
