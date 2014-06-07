@@ -26,7 +26,7 @@ module EnjuSearchLog
       end
 
       def write_search_log(query, total, username, format)
-        logger = ActiveSupport::BufferedLogger.new(File.join(Rails.root, 'log', 'search.log'))
+        logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', 'search.log'))
         logger.info "#{Time.zone.now}\t#{query}\t#{total}\t#{username}\t#{format}"
       end
     end

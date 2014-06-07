@@ -5,7 +5,7 @@ class SearchHistory < ActiveRecord::Base
     :result_set_idle_time, :records, :next_record_position, :diagnostics,
     :extra_response_data, :echoed_search_retrieve_request
 
-  scope :not_found, where(:number_of_records => 0)
+  scope :not_found, -> {where(:number_of_records => 0)}
   belongs_to :user
 
   paginates_per 10
