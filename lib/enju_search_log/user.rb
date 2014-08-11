@@ -7,8 +7,6 @@ module EnjuSearchLog
     module ClassMethods
       def enju_search_log_user_model
         include InstanceMethods
-        attr_accessible :save_search_history
-        attr_accessible :save_search_history, :as => :admin
         has_many :search_histories, :dependent => :destroy
       end
     end

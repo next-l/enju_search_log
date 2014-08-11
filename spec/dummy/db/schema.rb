@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418121539) do
+ActiveRecord::Schema.define(:version => 20140811031145) do
 
   create_table "library_groups", :force => true do |t|
     t.string   "name",                                                 :null => false
@@ -30,6 +30,24 @@ ActiveRecord::Schema.define(:version => 20120418121539) do
   end
 
   add_index "library_groups", ["short_name"], :name => "index_library_groups_on_short_name"
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "user_group_id"
+    t.integer  "library_id"
+    t.string   "locale"
+    t.string   "user_number"
+    t.text     "full_name"
+    t.text     "note"
+    t.text     "keyword_list"
+    t.integer  "required_role_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.datetime "expired_at"
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+  add_index "profiles", ["user_number"], :name => "index_profiles_on_user_number", :unique => true
 
   create_table "roles", :force => true do |t|
     t.string   "name"
