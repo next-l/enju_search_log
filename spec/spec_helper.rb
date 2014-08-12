@@ -27,6 +27,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.extend ControllerMacros, :type => :controller
+
+  config.infer_spec_type_from_file_location!
 end
 
 FactoryGirl.definition_file_paths << "#{::Rails.root}/../../spec/factories"
