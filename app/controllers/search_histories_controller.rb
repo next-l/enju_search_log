@@ -21,7 +21,7 @@ class SearchHistoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @search_histories.to_json }
+      format.json { render json: @search_histories.to_json }
     end
   end
 
@@ -30,7 +30,7 @@ class SearchHistoriesController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @search_history.to_json }
+      format.json { render json: @search_history.to_json }
     end
   end
 
@@ -49,7 +49,7 @@ class SearchHistoriesController < ApplicationController
     SearchHistory.remove_all_history(current_user)
 
     respond_to do |format|
-      format.html { redirect_to search_histories_url, :notice => t('controller.successfully_deleted', :model => t('activerecord.models.search_history')) }
+      format.html { redirect_to search_histories_url, notice: t('controller.successfully_deleted', model: t('activerecord.models.search_history')) }
       format.json { head :no_content }
     end
   end

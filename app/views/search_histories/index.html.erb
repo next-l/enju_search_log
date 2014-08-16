@@ -1,5 +1,5 @@
 <div id="content_detail" class="ui-corner-all">
-<h1 class="title"><%= t('page.listing', :model => t('activerecord.models.search_history')) -%></h1>
+<h1 class="title"><%= t('page.listing', model: t('activerecord.models.search_history')) -%></h1>
 <div id="content_list">
   <% if current_user.try(:has_role?, 'Librarian') %>
     <%- if params[:mode] == 'not_found' -%>
@@ -9,7 +9,7 @@
       </p>
     <%- else -%>
       <p>
-        <%= link_to t('search_history.failed_search'), search_histories_path(:mode => 'not_found') -%>
+        <%= link_to t('search_history.failed_search'), search_histories_path(mode: 'not_found') -%>
       </p>
     <%- end -%>
   <% end %>
@@ -41,7 +41,7 @@
     </td>
     <td>
       <%- if can? :delete, search_history -%>
-        <%= link_to t('page.destroy'), search_history, :data => {:confirm => t('page.are_you_sure')}, :method => :delete -%>
+        <%= link_to t('page.destroy'), search_history, data: {confirm: t('page.are_you_sure')}, method: :delete -%>
       <%- end -%>
     </td>
   </tr>
@@ -54,6 +54,6 @@
 
 <div id="submenu" class="ui-corner-all">
   <ul>
-    <li><%= link_to t('search_history.remove_all_history'), remove_all_search_histories_path, :method => :put, :data => {:confirm => t('page.are_you_sure')} %></li>
+    <li><%= link_to t('search_history.remove_all_history'), remove_all_search_histories_path, method: :put, data: {confirm: t('page.are_you_sure')} %></li>
   </ul>
 </div>
