@@ -7,7 +7,7 @@ module EnjuSearchLog
     module ClassMethods
       def enju_search_log_user_model
         include InstanceMethods
-        has_many :search_histories, :dependent => :destroy
+        has_many :search_histories, dependent: :destroy
       end
     end
 
@@ -17,14 +17,14 @@ module EnjuSearchLog
         if Setting.write_search_log_to_file
           write_search_log(query, total, username, format)
         else
-          history = SearchHistory.new(:query => query, :start_record => offset + 1, :maximum_records => nil, :number_of_records => total)
+          history = SearchHistory.new(query: query, start_record: offset + 1, maximum_records: nil, number_of_records: total)
           history.user = self
-          history.save(:validate => false)
+          history.save(validate: false)
         end
       end
 
       def write_search_log(query, total, username, format)
-        logger = ActiveSupport::BufferedLogger.new(File.join(Rails.root, 'log', 'search.log'))
+        logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', 'search.log'))
         logger.info "#{Time.zone.now}\t#{query}\t#{total}\t#{username}\t#{format}"
       end
     end
