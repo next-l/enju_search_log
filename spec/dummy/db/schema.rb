@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120418121539) do
+ActiveRecord::Schema.define(version: 20140811132912) do
+
+  create_table "agent_merge_lists", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "agent_merges", force: true do |t|
+    t.integer  "agent_id",            null: false
+    t.integer  "agent_merge_list_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "agent_merges", ["agent_id"], name: "index_agent_merges_on_agent_id"
+  add_index "agent_merges", ["agent_merge_list_id"], name: "index_agent_merges_on_agent_merge_list_id"
 
   create_table "library_groups", force: true do |t|
     t.string   "name",                                              null: false
@@ -30,6 +46,25 @@ ActiveRecord::Schema.define(version: 20120418121539) do
   end
 
   add_index "library_groups", ["short_name"], name: "index_library_groups_on_short_name"
+
+  create_table "profiles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "user_group_id"
+    t.integer  "library_id"
+    t.string   "locale"
+    t.string   "user_number"
+    t.text     "full_name"
+    t.text     "note"
+    t.text     "keyword_list"
+    t.integer  "required_role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "expired_at"
+    t.boolean  "save_search_history"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["user_number"], name: "index_profiles_on_user_number", unique: true
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -65,6 +100,22 @@ ActiveRecord::Schema.define(version: 20120418121539) do
   end
 
   add_index "search_histories", ["user_id"], name: "index_search_histories_on_user_id"
+
+  create_table "series_statement_merge_lists", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "series_statement_merges", force: true do |t|
+    t.integer  "series_statement_id",            null: false
+    t.integer  "series_statement_merge_list_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "series_statement_merges", ["series_statement_id"], name: "index_series_statement_merges_on_series_statement_id"
+  add_index "series_statement_merges", ["series_statement_merge_list_id"], name: "index_series_statement_merges_on_list_id"
 
   create_table "user_has_roles", force: true do |t|
     t.integer  "user_id"

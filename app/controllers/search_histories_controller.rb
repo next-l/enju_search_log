@@ -1,6 +1,5 @@
 class SearchHistoriesController < ApplicationController
-  # index, show以外は外部からは呼び出されないはず
-  load_and_authorize_resource
+  before_action :set_search_history, only: [:show, :edit, :update, :destroy]
 
   # GET /search_histories
   # GET /search_histories.json
@@ -21,7 +20,7 @@ class SearchHistoriesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @search_histories.to_json }
+      format.json { render json: @search_histories.to_json }
     end
   end
 
@@ -30,7 +29,7 @@ class SearchHistoriesController < ApplicationController
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @search_history.to_json }
+      format.json { render json: @search_history.to_json }
     end
   end
 
@@ -49,8 +48,15 @@ class SearchHistoriesController < ApplicationController
     SearchHistory.remove_all_history(current_user)
 
     respond_to do |format|
-      format.html { redirect_to search_histories_url, :notice => t('controller.successfully_deleted', :model => t('activerecord.models.search_history')) }
+      format.html { redirect_to search_histories_url, notice: t('controller.successfully_deleted', model: t('activerecord.models.search_history')) }
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_search_history
+      @search_history = SearchHistory.find(params[:id])
+      authorize @search_history
+    end
 end

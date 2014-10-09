@@ -7,7 +7,7 @@ describe SearchHistory do
   it "should create search history" do
     user = users(:admin)
     user.save_search_history = true
-    user.save_history('test', 1, 10).should be_true
+    user.save_history('test', 1, 10).should be_truthy
   end
 
   it "should not create search history if the user disabled logging" do
