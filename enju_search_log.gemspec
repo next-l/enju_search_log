@@ -26,4 +26,5 @@ Gem::Specification.new do |s|
   #s.add_development_dependency "enju_leaf", "~> 1.1.0.rc16"
   s.add_development_dependency "annotate"
   s.add_development_dependency "rspec-activemodel-mocks"
+  s.add_development_dependency "simplecov"
 end
