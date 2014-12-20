@@ -1,10 +1,4 @@
 class SearchHistory < ActiveRecord::Base
-  attr_accessible :user_id, :operation, :sru_version, :query, :maximum_records,
-    :record_packing, :record_schema, :result_set_ttl, :stylesheet,
-    :extra_request_data, :number_of_records, :result_set_id,
-    :result_set_idle_time, :records, :next_record_position, :diagnostics,
-    :extra_response_data, :echoed_search_retrieve_request
-
   scope :not_found, -> { where(number_of_records: 0) }
   belongs_to :user
 

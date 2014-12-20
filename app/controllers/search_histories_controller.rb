@@ -53,4 +53,15 @@ class SearchHistoriesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def search_history_params
+    params.require(:search_history).require(
+      :user_id, :operation, :sru_version, :query, :maximum_records,
+      :record_packing, :record_schema, :result_set_ttl, :stylesheet,
+      :extra_request_data, :number_of_records, :result_set_id,
+      :result_set_idle_time, :records, :next_record_position, :diagnostics,
+      :extra_response_data, :echoed_search_retrieve_request
+    )
+  end
 end
