@@ -1,9 +1,10 @@
 language: ruby
+cache: bundler
 rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.5
-  - 2.2.0-rc1
+  - 2.2.0
 before_script:
   - mysql -e 'create database enju_test'
   - psql -c 'create database enju_test;' -U postgres
@@ -30,10 +31,8 @@ matrix:
     gemfile: gemfiles/rails4_2.gemfile
   - rvm: 2.1.5
     gemfile: gemfiles/rails3_2.gemfile
-  - rvm: 2.2.0-rc1
+  - rvm: 2.2.0
     gemfile: gemfiles/rails3_2.gemfile
-  - rvm: 2.2.0-rc1
-    gemfile: gemfiles/rails4_1.gemfile
 notifications:
   slack:
     secure: e6e/e/SLwZzAaGmqLaRHqGCplN19V7mDS2Sm3j0kqyKslh+gvxsntPBqAJSV5ITemX4MdjJPLc0PPvlMI2Yi6BULHfwQTB6dBiglEhnhz1h7uP/Vmk3GISa900G//7PvU4YDHbAAHsJ0DSqqEZqUNVr8GMANT7nosojat/S394k=
