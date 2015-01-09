@@ -24,7 +24,11 @@ module EnjuSearchLog
       end
 
       def write_search_log(query, total, username, format)
-        logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', 'search.log'))
+        if Rails::VERSION::MAJOR >= 4
+          logger = ActiveSupport::Logger.new(File.join(Rails.root, 'log', 'search.log'))
+        else
+          logger = ActiveSupport::BufferedLogger.new(File.join(Rails.root, 'log', 'search.log'))
+        end
         logger.info "#{Time.zone.now}\t#{query}\t#{total}\t#{username}\t#{format}"
       end
     end

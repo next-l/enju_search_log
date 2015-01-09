@@ -1,5 +1,6 @@
 class SearchHistoriesController < ApplicationController
-  before_action :set_search_history, only: [:show, :edit, :update, :destroy]
+  # index, show以外は外部からは呼び出されないはず
+  load_and_authorize_resource
 
   # GET /search_histories
   # GET /search_histories.json
@@ -54,9 +55,13 @@ class SearchHistoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_search_history
-      @search_history = SearchHistory.find(params[:id])
-      authorize @search_history
-    end
+  def search_history_params
+    params.require(:search_history).require(
+      :user_id, :operation, :sru_version, :query, :maximum_records,
+      :record_packing, :record_schema, :result_set_ttl, :stylesheet,
+      :extra_request_data, :number_of_records, :result_set_id,
+      :result_set_idle_time, :records, :next_record_position, :diagnostics,
+      :extra_response_data, :echoed_search_retrieve_request
+    )
+  end
 end
