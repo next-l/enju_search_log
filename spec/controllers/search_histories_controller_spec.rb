@@ -51,13 +51,13 @@ describe SearchHistoriesController do
     describe "When not logged in" do
       it "assigns all search_histories as @search_histories" do
         get :index
-        assigns(:search_histories).should be_empty
+        assigns(:search_histories).should be_nil
         response.should redirect_to new_user_session_url
       end
     
       it "should not get other's search_histories" do
         get :index, :user_id => users(:admin).username
-        assigns(:search_histories).should be_empty
+        assigns(:search_histories).should be_nil
         response.should redirect_to new_user_session_url
       end
     end
