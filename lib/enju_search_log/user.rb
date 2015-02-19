@@ -14,7 +14,7 @@ module EnjuSearchLog
     module InstanceMethods
       def save_history(query, offset = 0, total = 0, format = nil)
         return nil unless self.save_search_history
-        if Rails.application.config_for(:enju_leaf)["write_search_log_to_file"]
+        if ENV['ENJU_WRITE_SEARCH_LOG_TO_FILE']
           write_search_log(query, total, username, format)
         else
           history = SearchHistory.new(query: query, start_record: offset + 1, maximum_records: nil, number_of_records: total)
