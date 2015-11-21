@@ -1,6 +1,6 @@
 class SearchHistoriesController < ApplicationController
-  # index, show以外は外部からは呼び出されないはず
-  load_and_authorize_resource
+  before_action :set_search_history, only: [:show, :edit, :update, :destroy]
+  before_action :check_policy, only: [:index, :new, :create]
 
   # GET /search_histories
   # GET /search_histories.json
@@ -55,6 +55,15 @@ class SearchHistoriesController < ApplicationController
   end
 
   private
+  def set_search_history
+    @search_history = SearchHistory.find(params[:id])
+    authorize @search_history
+  end
+
+  def check_policy
+    authorize SearchHistory
+  end
+
   def search_history_params
     params.require(:search_history).require(
       :user_id, :operation, :sru_version, :query, :maximum_records,
