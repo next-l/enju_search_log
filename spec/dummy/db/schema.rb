@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627232316) do
+ActiveRecord::Schema.define(version: 20160813130535) do
 
   create_table "accepts", force: :cascade do |t|
     t.integer  "basket_id"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20160627232316) do
     t.string   "url",            default: "http://localhost:3000/"
     t.text     "settings"
     t.text     "html_snippet"
+    t.string   "email"
   end
 
   add_index "library_groups", ["short_name"], name: "index_library_groups_on_short_name"
