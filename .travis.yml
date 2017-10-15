@@ -5,7 +5,7 @@ rvm:
   - 2.3.0
 before_script:
   - psql -c 'create database enju_search_log_dummy_test;' -U postgres
-  - psql enju_nii_dummy_test -c 'CREATE EXTENSION pgcrypto'
+  - psql enju_search_log_dummy_test -c 'CREATE EXTENSION pgcrypto'
   - bundle exec rake db:migrate
 services:
   - redis-server
