@@ -13,8 +13,8 @@ describe User do
     end
 
     it "should export save_search_history" do
-      user = FactoryGirl.create(:user,
-        profile: FactoryGirl.create(:profile,
+      user = FactoryBot.create(:user,
+        profile: FactoryBot.create(:profile,
           save_search_history: true))
       lines = User.export
       rows = CSV.new(lines, col_sep: "\t", headers: true)
