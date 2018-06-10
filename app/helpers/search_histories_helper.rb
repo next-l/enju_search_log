@@ -18,11 +18,11 @@ module SearchHistoriesHelper
     end
     divisor = ((max - min).div(classes.size)) + 1
 
-    content_tag :div, :class => "hTagcloud" do
-      content_tag :ul, :class => "popularity" do
+    content_tag :div, class: "hTagcloud" do
+      content_tag :ul, class: "popularity" do
         query_and_numbers.each do |query|
           content_tag :li do
-            link_to(h(query[0]), manifestations_url(:query => query[0]), :class => classes[(query[1] - min).div(divisor)])
+            link_to(h(query[0]), manifestations_url(query: query[0]), class: classes[(query[1] - min).div(divisor)])
           end
         end
       end
