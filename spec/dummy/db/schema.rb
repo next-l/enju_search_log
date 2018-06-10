@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304175658) do
+ActiveRecord::Schema.define(version: 2018_06_10_080102) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "pgcrypto"
+  enable_extension "plpgsql"
 
   create_table "accepts", force: :cascade do |t|
     t.integer "basket_id"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 20150304175658) do
     t.text "admin_networks"
     t.string "url", default: "http://localhost:3000/"
     t.text "settings"
+    t.boolean "write_search_log_to_file", default: false, null: false
     t.index ["short_name"], name: "index_library_groups_on_short_name"
   end
 
