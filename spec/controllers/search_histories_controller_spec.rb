@@ -29,7 +29,7 @@ describe SearchHistoriesController do
       end
 
       it "assigns failed search_histories as @search_histories" do
-        get :index, :mode => 'not_found'
+        get :index, params: { mode: 'not_found' }
         assigns(:search_histories).should eq @user.search_histories.not_found.order('created_at DESC').page(1)
         assert_response :success
       end
@@ -54,9 +54,9 @@ describe SearchHistoriesController do
         assigns(:search_histories).should be_nil
         response.should redirect_to new_user_session_url
       end
-    
+
       it "should not get other's search_histories" do
-        get :index, :user_id => users(:admin).username
+        get :index, params: { user_id: users(:admin).username }
         assigns(:search_histories).should be_nil
         response.should redirect_to new_user_session_url
       end
@@ -76,7 +76,7 @@ describe SearchHistoriesController do
         end
 
         it "assigns the requested search_history as @search_history" do
-          get :show, :id => @search_history.id
+          get :show, params: { id: @search_history.id }
           response.should be_success
           assigns(:search_history).should eq(@search_history)
         end
@@ -88,7 +88,7 @@ describe SearchHistoriesController do
         end
 
         it "assigns the requested search_history as @search_history" do
-          get :show, :id => @search_history.id
+          get :show, params: { id: @search_history.id }
           response.should be_success
           assigns(:search_history).should eq(@search_history)
         end
@@ -96,9 +96,9 @@ describe SearchHistoriesController do
 
       it "should not show missing search_history" do
         lambda{
-          get :show, :id => 100
+          get :show, params: { id: 100 }
         }.should raise_error(ActiveRecord::RecordNotFound)
-        #response.should be_missing
+        # response.should be_missing
       end
     end
 
@@ -113,7 +113,7 @@ describe SearchHistoriesController do
         end
 
         it "assigns the requested search_history as @search_history" do
-          get :show, :id => @search_history.id
+          get :show, params: { id: @search_history.id }
           response.should be_success
           assigns(:search_history).should eq(@search_history)
         end
@@ -125,7 +125,7 @@ describe SearchHistoriesController do
         end
 
         it "should be forbidden" do
-          get :show, :id => @search_history.id
+          get :show, params: { id: @search_history.id }
           response.should be_forbidden
         end
       end
@@ -142,7 +142,7 @@ describe SearchHistoriesController do
         end
 
         it "assigns the requested search_history as @search_history" do
-          get :show, :id => @search_history.id
+          get :show, params: { id: @search_history.id }
           response.should be_success
           assigns(:search_history).should eq(@search_history)
         end
@@ -154,7 +154,7 @@ describe SearchHistoriesController do
         end
 
         it "should be forbidden" do
-          get :show, :id => @search_history.id
+          get :show, params: { id: @search_history.id }
           response.should be_forbidden
         end
       end
@@ -166,7 +166,7 @@ describe SearchHistoriesController do
       end
 
       it "should be forbidden" do
-        get :show, :id => @search_history.id
+        get :show, params: { id: @search_history.id }
         response.should redirect_to new_user_session_url
       end
     end
@@ -185,11 +185,11 @@ describe SearchHistoriesController do
         end
 
         it "destroys the requested search_history" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
         end
 
         it "redirects to the search_histories list" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
           response.should redirect_to search_histories_url
         end
       end
@@ -200,20 +200,20 @@ describe SearchHistoriesController do
         end
 
         it "destroys the requested search_history" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
         end
 
         it "redirects to the search_histories list" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
           response.should redirect_to search_histories_url
         end
       end
 
       it "should not destroy missing search_history" do
         lambda{
-          delete :destroy, :id => 100
+          delete :destroy, params: { id: 100 }
         }.should raise_error(ActiveRecord::RecordNotFound)
-        #response.should be_missing
+        # response.should be_missing
       end
     end
 
@@ -228,11 +228,11 @@ describe SearchHistoriesController do
         end
 
         it "destroys the requested search_history" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
         end
 
         it "redirects to the search_histories list" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
           response.should redirect_to search_histories_url
         end
       end
@@ -243,11 +243,11 @@ describe SearchHistoriesController do
         end
 
         it "destroys the requested search_history" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
         end
 
         it "should be forbidden" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
           response.should be_forbidden
         end
       end
@@ -264,11 +264,11 @@ describe SearchHistoriesController do
         end
 
         it "destroys the requested search_history" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
         end
 
         it "redirects to the search_histories list" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
           response.should redirect_to search_histories_url
         end
       end
@@ -279,11 +279,11 @@ describe SearchHistoriesController do
         end
 
         it "destroys the requested search_history" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
         end
 
         it "should be forbidden" do
-          delete :destroy, :id => @search_history.id
+          delete :destroy, params: { id: @search_history.id }
           response.should be_forbidden
         end
       end
@@ -295,11 +295,11 @@ describe SearchHistoriesController do
       end
 
       it "destroys the requested search_history" do
-        delete :destroy, :id => @search_history.id
+        delete :destroy, params: { id: @search_history.id }
       end
 
       it "should be forbidden" do
-        delete :destroy, :id => @search_history.id
+        delete :destroy, params: { id: @search_history.id }
         response.should redirect_to(new_user_session_url)
       end
     end
