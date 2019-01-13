@@ -1,5 +1,4 @@
 class SearchHistoriesController < ApplicationController
-  # index, show以外は外部からは呼び出されないはず
   before_action :set_search_history, only: [:show, :edit, :update, :destroy]
   before_action :check_policy, only: [:index, :new, :create]
 
@@ -7,13 +6,13 @@ class SearchHistoriesController < ApplicationController
   # GET /search_histories.json
   def index
     if params[:mode] == 'not_found'
-      #if current_user.has_search_history?('Administrator')
+      #if current_user.has_role?('Administrator')
       #  @search_histories = SearchHistory.not_found.order('created_at DESC').page(params[:page])
       #else
         @search_histories = current_user.search_histories.not_found.order('created_at DESC').page(params[:page])
       #end
     else
-      #if current_user.has_search_history?('Administrator')
+      #if current_user.has_role?('Administrator')
       #  @search_histories = SearchHistory.order('created_at DESC').page(params[:page])
       #else
         @search_histories = current_user.search_histories.order('created_at DESC').page(params[:page])
@@ -59,7 +58,6 @@ class SearchHistoriesController < ApplicationController
   def set_search_history
     @search_history = SearchHistory.find(params[:id])
     authorize @search_history
-    access_denied unless LibraryGroup.site_config.network_access_allowed?(request.ip)
   end
 
   def check_policy

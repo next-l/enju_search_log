@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, #:registerable,
     :recoverable, :rememberable, :trackable, #, :validatable
-    :lockable, :lock_strategy => :none, :unlock_strategy => :none
+    :lockable, lock_strategy: :none, unlock_strategy: :none
+
+  # Setup accessible (or protected) attributes for your model
 
   include EnjuSeed::EnjuUser
-  enju_search_log_user_model
+  include EnjuMessage::EnjuUser
+  include EnjuCirculation::EnjuUser
+  include EnjuSearchLog::EnjuUser
 end
