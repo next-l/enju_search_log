@@ -1123,7 +1123,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_034126) do
   end
 
   create_table "search_histories", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "operation", default: "searchRetrieve"
     t.float "sru_version", default: 1.2
     t.string "query"
@@ -1472,6 +1472,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_034126) do
   add_foreign_key "reserve_stat_has_users", "users"
   add_foreign_key "reserves", "manifestations"
   add_foreign_key "reserves", "users"
+  add_foreign_key "search_histories", "users"
   add_foreign_key "user_checkout_stats", "users"
   add_foreign_key "user_group_has_checkout_types", "checkout_types"
   add_foreign_key "user_group_has_checkout_types", "user_groups"

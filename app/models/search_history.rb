@@ -19,7 +19,7 @@ end
 # Table name: search_histories
 #
 #  id                             :bigint(8)        not null, primary key
-#  user_id                        :integer
+#  user_id                        :bigint(8)
 #  operation                      :string           default("searchRetrieve")
 #  sru_version                    :float            default(1.2)
 #  query                          :string
