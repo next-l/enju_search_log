@@ -28,8 +28,8 @@ end
 #
 # Table name: search_histories
 #
-#  id                             :bigint(8)        not null, primary key
-#  user_id                        :bigint(8)
+#  id                             :bigint           not null, primary key
+#  user_id                        :bigint
 #  operation                      :string           default("searchRetrieve")
 #  sru_version                    :float            default(1.2)
 #  query                          :string
