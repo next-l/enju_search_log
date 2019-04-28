@@ -1,7 +1,7 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.4.5
+  - 2.4.6
   - 2.5.5
 before_script:
   - psql -c 'create database enju_search_log_dummy_test;' -U postgres
