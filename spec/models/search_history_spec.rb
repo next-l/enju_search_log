@@ -28,8 +28,8 @@ end
 #
 # Table name: search_histories
 #
-#  id                             :bigint           not null, primary key
-#  user_id                        :bigint
+#  id                             :integer          not null, primary key
+#  user_id                        :integer
 #  operation                      :string           default("searchRetrieve")
 #  sru_version                    :float            default(1.2)
 #  query                          :string
@@ -48,6 +48,6 @@ end
 #  diagnostics                    :text
 #  extra_response_data            :text
 #  echoed_search_retrieve_request :text
-#  created_at                     :datetime         not null
-#  updated_at                     :datetime         not null
+#  created_at                     :datetime
+#  updated_at                     :datetime
 #
