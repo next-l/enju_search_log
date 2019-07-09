@@ -7,7 +7,6 @@ before_script:
   - psql -c 'create database enju_search_log_dummy_test;' -U postgres
   - psql enju_search_log_dummy_test -c 'CREATE EXTENSION pgcrypto'
   - bundle exec rake db:migrate
-  - bundle exec rake app:sunspot:solr:start
 services:
   - redis-server
 env:

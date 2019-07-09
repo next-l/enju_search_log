@@ -14,6 +14,7 @@ require 'rspec/rails'
 require 'factory_bot'
 require 'rspec/active_model/mocks'
 require 'pundit/rspec'
+require 'sunspot_matchers'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -60,6 +61,11 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.extend ControllerMacros, type: :controller
+
+  config.include SunspotMatchers  
+  config.before do
+    Sunspot.session = SunspotMatchers::SunspotSessionSpy.new(Sunspot.session)
+  end
 end
 
 FactoryBot.definition_file_paths << "#{::Rails.root}/../../spec/factories"
